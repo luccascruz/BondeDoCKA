@@ -1,10 +1,10 @@
 ## DAY3
 
 ### Questão 1
-Criar um pod estatico utilizando a imagem do nginx.
+Criar um pod estático utilizando a imagem do nginx.
 
 ### Resposta 1
-Para criar um pod estatico, voce precisa adicionar o manifesto de criação do pod desejado, dentro do diretório /etc/kubernetes/manifests, conforme abaixo: 
+Para criar um pod estático, você precisa adicionar o manifesto de criação do pod desejado, dentro do diretório /etc/kubernetes/manifests, conforme abaixo: 
 
 ```bash
 cd /etc/kubernetes/manifests
@@ -32,7 +32,7 @@ status: {}
 ```
 
 ### Questão 2
-O nosso gerente está assustado, pois conversando com o gerente de uma outra
+O nosso gerente está assustado, pois, conversando com o gerente de outra
 empresa, ficou sabendo que aconteceu uma indisponibilidade no ambiente
 Kubernetes de lá por conta de certificados expirados.
 Ele está demasiadamente preocupado.
@@ -41,7 +41,7 @@ portanto, adicione no arquivo /tmp/meus-certificados.txt todos eles e suas
 datas de expiração.
 
 ### Resposta 2
-Os certificados, por padrao, ficam no diretório /etc/kubernetes/pki. Para que
+Os certificados, por padrão, ficam no diretório /etc/kubernetes/pki. Para que
 você possa verificar a data de expiração, você pode utilizar o comando openssl,
 conforme abaixo:
 
@@ -65,22 +65,21 @@ kubeadm certs check-expiration >> /tmp/meus-certificados.txt
 ```
 
 ### Questão 3
-Pois bem, vimos que precisamos atualizar o nosso cluster imediatamente, sem
-trazer nenhum indisponibilidade para o ambiente. Como devemos proceder?
+Pois, bem! Vimos que precisamos atualizar o nosso cluster imediatamente, sem
+trazer nenhuma indisponibilidade para o ambiente. Como devemos proceder?
 
 
 
 ### Resposta 3
 Podemos utilizar o comando kubeadm certs para visualizar as datas corretas e
-tbm para realizar sua renovação. Conforme estamos fazendo abaixo:
+também para realizar sua renovação. Conforme estamos fazendo abaixo:
 
 ```bash
 kubeadm certs renew all
 ```
 
-Lembrando a importancia de realizar o procedimento em todos os nodes master.
+Lembrando a importância de realizar o procedimento em todos os nodes master.
 Lembre se restartar o apiserver, controller, scheduller e o etcd.
 Para isso, você pode utilizar o comando docker stop, de dentro do node que está
 sendo atualizado.
-
 
